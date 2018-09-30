@@ -136,13 +136,13 @@ class Timer {
   }
 }
 
-let userSelected = [5000, 1000, 2];
+let userSelected = [5000, 1000, 2, 400];
 const promiseClasses = userSelected.map((x, i) => {
   const obj = new Timer(x, x);
   return obj;
 });
 
-const parallelFunc = async promises => {
+const multiBall = async promises => {
   console.log("This will be executed in parallel using Promise.all(...)");
   const start = new Date();
   const run = promises.map(x => x.sleep());
@@ -152,4 +152,4 @@ const parallelFunc = async promises => {
   const final = data.join(" ");
   console.log(`sleeping done - got ${final} in ${new Date() - start}`);
 };
-parallelFunc(promiseClasses);
+multiBall(promiseClasses);
