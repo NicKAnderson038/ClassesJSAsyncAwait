@@ -112,8 +112,9 @@ document.getElementById("app").innerHTML = `
 // }
 
 class Timer {
-  constructor(time) {
+  constructor(time, count) {
     this.time = time;
+    this.count = count;
   }
   sleep() {
     console.log(`class-starting ${this.time}`);
@@ -124,11 +125,20 @@ class Timer {
       }, this.time);
     });
   }
+  counter() {
+    console.log(`class-starting-counting ${this.count}`);
+    for (let i = 0; i <= this.count; i++) {
+      if (i === this.count) {
+        console.log(`class-ending-counting ${this.count}`);
+        return this.count;
+      }
+    }
+  }
 }
 
 let userSelected3 = [5000, 1000, 2];
 const promiseClasses = userSelected3.map((x, i) => {
-  const obj = new Timer(x);
+  const obj = new Timer(x, x);
   return obj;
 });
 
