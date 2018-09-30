@@ -136,8 +136,8 @@ class Timer {
   }
 }
 
-let userSelected3 = [5000, 1000, 2];
-const promiseClasses = userSelected3.map((x, i) => {
+let userSelected = [5000, 1000, 2];
+const promiseClasses = userSelected.map((x, i) => {
   const obj = new Timer(x, x);
   return obj;
 });
