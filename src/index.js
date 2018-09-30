@@ -147,8 +147,9 @@ const parallelFunc = async promises => {
   const start = new Date();
   const run = promises.map(x => x.sleep());
   // const [a, b, c] = await Promise.all([sleep(3000), sleep(1000), sleep(2)]);
-  const [a, b, c] = await Promise.all(run);
-
-  console.log(`sleeping done - got ${a} ${b} ${c} in ${new Date() - start}`);
+  // console.log(`sleeping done - got ${a} ${b} ${c} in ${new Date() - start}`);
+  const data = await Promise.all(run);
+  const final = data.join(" ");
+  console.log(`sleeping done - got ${final} in ${new Date() - start}`);
 };
 parallelFunc(promiseClasses);
