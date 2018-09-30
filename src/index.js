@@ -132,13 +132,6 @@ const promiseClasses = userSelected3.map((x, i) => {
   return obj;
 });
 
-// console.log(promises)
-// const obj = {}
-// for(let key of promises){
-//   obj[key] = true
-// }
-// console.log(obj)
-
 const parallelFunc = async promises => {
   console.log("This will be executed in parallel using Promise.all(...)");
   const start = new Date();
