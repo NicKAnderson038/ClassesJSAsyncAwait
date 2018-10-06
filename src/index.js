@@ -111,7 +111,6 @@ document.getElementById("app").innerHTML = `
 //   });
 // }
 
-
 class Timer {
   constructor(time, count) {
     this.time = time;
@@ -122,9 +121,19 @@ class Timer {
     return new Promise(resolve => {
       setTimeout(() => {
         console.log(`class-done ${this.time}`);
-        resolve(this.time);
+        // resolve(this.time);
+        resolve(this.fetcher());
       }, this.time);
     });
+  }
+  async fetcher() {
+    const response = await fetch("https://jsonplaceholder.typicode.com/todos");
+    console.log("fetch");
+    const total = await response.reduce((acc, val) => {
+      const num = val.userId;
+      return acc + num;
+    });
+    return total;
   }
   counter() {
     console.log(`class-starting-counting ${this.count}`);
