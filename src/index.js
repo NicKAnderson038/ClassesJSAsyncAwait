@@ -127,13 +127,13 @@ class Timer {
     });
   }
   async fetcher() {
-    const response = await fetch("https://jsonplaceholder.typicode.com/todos");
-    console.log("fetch");
-    const total = await response.reduce((acc, val) => {
-      const num = val.userId;
-      return acc + num;
-    });
-    return total;
+    const res = await fetch("https://jsonplaceholder.typicode.com/todos");
+    const data = await res.json();
+    const total = await data.reduce((acc, val) => {
+      return acc + val.userId;
+    }, 0);
+    console.log(`%c ${total}`, "background: #222; color: #bada55");
+    return this.time;
   }
   counter() {
     console.log(`class-starting-counting ${this.count}`);
@@ -146,7 +146,7 @@ class Timer {
   }
 }
 
-let userSelected = [5000, 2, 2000, 400];
+let userSelected = [20000, 2, 8000, 400, 4000, 10000, 600, 3000, 3, 5000];
 const promiseClasses = userSelected.map((x, i) => {
   const obj = new Timer(x, x);
   return obj;
@@ -161,7 +161,7 @@ const multiBall = async promises => {
   const data = await Promise.all(run);
   const final = data.join(" ");
   console.log(
-    `sleeping done - started in ${start.getMilliseconds()} and got ${final} in ${new Date() -
+    `sleeping done - started in ${start.getMilliseconds()} milliseconds and got ${final} in ${new Date() -
       start}`
   );
 };
